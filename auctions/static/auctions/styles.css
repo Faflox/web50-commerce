@@ -1,0 +1,104 @@
+body {
+    padding: 20px;
+}
+
+.alert {
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content{
+    margin-left: 2%;
+}
+
+.listing{
+    display: grid;
+    border-bottom: 2px solid black;
+    margin-top: 30px;
+    background-color: rgb(233, 236, 238);
+}
+
+.listing a{
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.listing p{
+    padding-bottom: 10px;
+}
+
+.listing-image{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.watchlist-button button{
+    margin-left: 12px;
+    margin-bottom: 20px;
+    background-color: rgb(127, 255, 136);
+    border-radius: 5px;
+}
+
+.watchlist-button button:hover{
+    background-color: rgb(228, 228, 228);
+}
+
+.comments{
+    margin-top: 50px;
+    padding-top: 12px;
+    border-top: 1px solid black;
+}
+
+
+.end-auction{
+    margin-left: 12px;
+    margin-bottom: 20px;
+    padding: 4px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-decoration: none;
+}
+
+.end-auction:hover{
+    background-color: rgb(228, 228, 228);
+    color: rgb(250, 72, 72);
+}
+
+.won-auction p{
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(127, 255, 136);
+
+}
+
+.row p{
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    text-align: center;
+    padding: 0px 12px;
+    background-color: rgb(236, 56, 56);
+    border-radius: 5px;
+}

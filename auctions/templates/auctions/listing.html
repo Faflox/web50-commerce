@@ -1,0 +1,81 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+
+    <div class="won-auction">
+        {% if user == listing.price.user and not listing.active %}
+            <p>You won the auction!</p>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% if user.is_authenticated and listing.active %}
+            {% if user == listing.user %}
+                <a class="end-auction" href="{% url 'endAuction' listing.id %}">End Auction</a>
+            {% else %}
+                <div class="watchlist-button">
+                {% if ListingInWatchlist %}
+                    <form action="{% url 'removeFromWatchlist' listing.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Remove from Watchlist</button> 
+                    </form>
+                {% else %}
+                    <form action="{% url 'addToWatchlist' listing.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Add to Watchlist</button>
+                    </form>
+                {% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            <p>Auction is not active</p>
+        {% endif %}
+
+    </div>
+
+    <h2>Item: {{ listing.title }}</h2>
+    <p><i>$ {{ listing.price }}</i></p>
+    <img class="listing-image" src="{{ listing.image }}" alt="Photo is missing">
+    <p>{{ listing.description }}</p>
+
+    <div class="bids">
+        {% if user.is_authenticated %}
+            <form action="{% url 'placeBid' listing.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="newBid" placeholder="Place a bid...">
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+
+        {% if message %}
+            {% if updateBid %} 
+                <p>{{ message }}</p> 
+            {% endif %}
+            {% if not updateBid %}
+                <p>{{ message }}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <br>
+    <br>
+
+    <div class="comments">
+        {% if user.is_authenticated %}
+            <form action="{% url 'addComment' listing.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="text" placeholder="Add a comment...">
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+        <div class="comments">
+            <br>
+            <h3>Comments</h3>
+            {% for comment in listingComments %}
+                <p> "{{ comment.text }}" <br> Autor: {{ comment.user.username }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
